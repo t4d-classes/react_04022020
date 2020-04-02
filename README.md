@@ -8,7 +8,7 @@ Eric Greene
 
 Class:
 
-- Monday - Friday: 8:30am to 4:30pm PDT
+- Thursday - Friday: 8:30am to 4:30pm PDT
 
 Breaks:
 
@@ -18,7 +18,7 @@ Breaks:
 
 ## Course Outline
 
-### JavaScript/TypeScript content will be included as needed in the class
+### JavaScript content will be included as needed in the class
 
 - Day 1 - Core React - Components, Props, State, Composition, Refs, Optimization
 - Day 2 - Other Topics - State Management, Routing, Unit Testing, Remaining Topics
