@@ -21,7 +21,7 @@ Breaks:
 ### JavaScript content will be included as needed in the class
 
 - Day 1 - Core React - Components, Props, State, Composition, Refs, Optimization
-- Day 2 - Other Topics - State Management, Routing, Unit Testing, Remaining Topics
+- Day 2 - Other Topics - App State Management, Routing, Unit Testing, Remaining Topics
 
 ## Requirements
 
