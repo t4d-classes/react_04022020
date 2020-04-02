@@ -1,4 +1,4 @@
-# Exercise 6
+# Exercise 7
 
 Note: Content Slides: 1 - 82
 
