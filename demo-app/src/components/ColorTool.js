@@ -44,7 +44,7 @@ export const ColorTool = ({ colors: initialColors }) => {
 
 
   return <>
-    <ToolHeader />
+    <ToolHeader headerText="Color Tool" />
     <ol>
       {colors.map(color => <li key={color.id}>{color.name}</li>)}
     </ol>
