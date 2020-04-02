@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const ColorTool = ({ colors }) => {
+export const ColorTool = ({ colors: initialColors }) => {
 
   // const colorFormState = useState({
   //   name: '',
@@ -13,22 +13,33 @@ export const ColorTool = ({ colors }) => {
     name: '', hexcode: '',
   });
 
+  const [ colors, setColors ] = useState(initialColors.concat());
+
 
   const change = (e) => {
-
     setColorForm({
-      
       // object spread operator
       // copies the properties from colorForm into the new object
       ...colorForm,
-
       // computed property
       [ e.target.name ]: e.target.value,
+    });
+  };
+
+  const appendColor = () => {
+
+    setColors(colors.concat({
+      ...colorForm,
+      id: Math.max(...colors.map(c => c.id), 0) + 1,
+    }));
+
+    setColorForm({
+      name: '', hexcode: '',
     });
 
   };
 
-  console.log(colorForm);
+
 
   return <>
     <header>
@@ -48,6 +59,7 @@ export const ColorTool = ({ colors }) => {
         <input type="text" id="color-hexcode-input" name="hexcode"
           value={colorForm.hexcode} onChange={change} />
       </div>
+      <button type="button" onClick={appendColor}>Add Color</button>
     </form>
   </>;
 
