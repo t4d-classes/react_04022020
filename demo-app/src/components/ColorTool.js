@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { ToolHeader } from './ToolHeader';
+
 export const ColorTool = ({ colors: initialColors }) => {
 
   // const colorFormState = useState({
@@ -42,9 +44,7 @@ export const ColorTool = ({ colors: initialColors }) => {
 
 
   return <>
-    <header>
-      <h1>Color Tool</h1>
-    </header>
+    <ToolHeader />
     <ol>
       {colors.map(color => <li key={color.id}>{color.name}</li>)}
     </ol>
