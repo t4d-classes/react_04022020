@@ -19,7 +19,8 @@ export const CarTable = ({ cars, onDeleteCar: deleteCar }) => {
       </thead>
       <tbody>
         {cars.map(car =>
-          <CarViewRow key={car.id} car={car} onDeleteCar={deleteCar} />)}
+          <CarViewRow key={car.id} car={car}
+            onDeleteCar={deleteCar} />)}
       </tbody>
     </table>
   );
