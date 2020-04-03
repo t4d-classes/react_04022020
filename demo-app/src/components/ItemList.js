@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 export const ItemList = ({
@@ -8,7 +8,7 @@ export const ItemList = ({
 
   return (
     <ul>
-      {items.map(item => <li key={keyFn(item)}>
+      {items.map( (item, index) => <li key={keyFn(item)}>
         {contentFn(item)}
         {actionLabel && <button type="button" onClick={() => action(item)}>
           {actionLabel}
@@ -30,4 +30,6 @@ ItemList.propTypes = {
 ItemList.defaultProps = {
   items: [],
 };
+
+export const ItemListMemo = memo(ItemList);
 

@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { useColorStore } from '../stores/colorStore';
 
 import { ToolHeader } from './ToolHeader';
-import { ItemList } from './ItemList';
+import { ItemListMemo as ItemList } from './ItemList';
+
+
+const colorItemKey = color => color.id;
+const colorItemContent = color => color.name;
+
 
 export const ColorTool = () => {
 
@@ -29,14 +34,16 @@ export const ColorTool = () => {
     });
   };
 
-  const colorItemKey = color => color.key;
-  const colorItemContent = color => color.name;
+  const deleteColor = useCallback(
+    color => removeColor(color.id),
+    [ removeColor ]
+  );
 
   return <>
     <ToolHeader headerText="Color Tool" />
     <ItemList items={colors}
       keyFn={colorItemKey} contentFn={colorItemContent}
-      actionLabel="Delete" onAction={color => removeColor(color.id)} />
+      actionLabel="Delete" onAction={deleteColor} />
     <form>
       <div>
         <label htmlFor="color-name-input">Name:</label>
