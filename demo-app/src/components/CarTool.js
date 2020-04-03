@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
-export const CarTool = (props) => {
+import { CarTable } from './CarTable';
+
+export const CarTool = ({ cars: initialCars }) => {
 
   const [ carForm, setCarForm ] = useState({
     make: '', model: '', year: 1900, color: '', price: 0,
   });
+
+  const [ cars, setCars ] = useState(initialCars.concat());
 
   const change = (e) => {
 
@@ -16,35 +20,23 @@ export const CarTool = (props) => {
 
   };
 
-  console.log(carForm);
+  const appendCar = () => {
 
+    setCars(cars.concat({
+      ...carForm,
+      id: Math.max(...cars.map(c => c.id), 0) + 1,
+    }));
+
+    setCarForm({
+      make: '', model: '', year: 1900, color: '', price: 0,
+    });
+  };
 
   return <>
     <header>
       <h1>Car Tool</h1>
     </header>
-    <table>
-      <thead>
-      <tr>
-        <th>Id</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Year</th>
-        <th>Color</th>
-        <th>Price</th>
-      </tr>
-      </thead>
-      <tbody>
-        {props.cars.map(car => <tr key={car.id}>
-          <td>{car.id}</td>
-          <td>{car.make}</td>
-          <td>{car.model}</td>
-          <td>{car.year}</td>
-          <td>{car.color}</td>
-          <td>{car.price}</td>
-        </tr>)}
-      </tbody>
-    </table>
+    <CarTable cars={cars} />
     <form>
       <div>
         <label htmlFor="make-input">Make:</label>
@@ -71,6 +63,7 @@ export const CarTool = (props) => {
         <input type="number" id="price-input" name="price"
           value={carForm.price} onChange={change} />
       </div>
+      <button type="button" onClick={appendCar}>Add Car</button>
     </form>
   </>;
 
