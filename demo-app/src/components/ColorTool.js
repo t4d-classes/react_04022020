@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { ToolHeader } from './ToolHeader';
+import { ItemList } from './ItemList';
 
 export const ColorTool = ({ colors: initialColors }) => {
 
@@ -41,13 +42,18 @@ export const ColorTool = ({ colors: initialColors }) => {
 
   };
 
+  const deleteColor = (colorId) => {
+    setColors(colors.filter(c => c.id !== colorId));
+  };
 
+  const colorItemKey = color => color.key;
+  const colorItemContent = color => color.name;
 
   return <>
     <ToolHeader headerText="Color Tool" />
-    <ol>
-      {colors.map(color => <li key={color.id}>{color.name}</li>)}
-    </ol>
+    <ItemList items={colors}
+      keyFn={colorItemKey} contentFn={colorItemContent}
+      actionLabel="Delete" onAction={color => deleteColor(color.id)} />
     <form>
       <div>
         <label htmlFor="color-name-input">Name:</label>
